@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import FormattedDate from './FormattedDate'
+import WeatherInfo from './WeatherInfo'
 import './Weather.css'
 
 
@@ -13,23 +13,28 @@ export default function Weather() {
     let [iconUrl, setIconUrl] = useState(null)
     let [date, setDate] = useState(null)
     let [ready, setReady] = useState(false)
-    const apiKey = 't676b5db7efa1d1594cf0o673c7cebc3'
 
+    function search() {
+        const apiKey = 't676b5db7efa1d1594cf0o673c7cebc3'
+        let url = `https://api.shecodes.io/weather/v1/forecast?query=${currentCity}&key=${apiKey}`
+        console.log('currentCityfunction search()')
+        console.log(currentCity)
 
-    let url = `https://api.shecodes.io/weather/v1/forecast?query=${currentCity}&key=${apiKey}`
-
-    if (!ready) {
         try {
             axios.get(url).then(handleResponse)
-            console.log('axios.get(url).then(handleResponse)')
         } catch (error) {
             console.log(`${error} uyuyuyhjj`)
         }
+
+
+    }
+
+    if (!ready) {
+        search()
     }
 
     function handleResponse(response) {
-        console.log('function handleResponse')
-        console.log(response.data.daily[0].time)
+        console.log(response.data)
         setTemperature(Math.round(response.data.daily[0].temperature.day))
         setHumidity(response.data.daily[0].temperature.humidity)
         setWind(response.data.daily[0].wind.speed)
@@ -37,8 +42,8 @@ export default function Weather() {
         setIconUrl(response.data.daily[0].condition.icon_url)
         let date = new Date(response.data.daily[0].time * 1000);
         setDate(date)
-        setReady(true)
         setCurrentCity(response.data.city)
+        setReady(true)
 
 
     }
@@ -49,9 +54,10 @@ export default function Weather() {
 
         if (cityNameElement.value) {
             setCurrentCity(cityNameElement.value)
+            console.log('cityNameElement.value')
+            console.log(cityNameElement.value)
             setReady(false)
         }
-
     }
 
     if (ready) {
@@ -67,27 +73,11 @@ export default function Weather() {
                         </div>
                     </div>
                 </form>
-                <h1>{currentCity}</h1>
-                <ul>
-                    <li>
-                        <FormattedDate date={date} />
-                    </li>
-                    <li>
-                        {description}
-                    </li>
-                </ul>
-                <div className="row">
-                    <div className="col-6">
-                        <img src={iconUrl} alt={description} />
-                        <span className='temperature' >{temperature}</span> <span className='unit'>°C</span>
-                    </div>
-                    <div className="col-3">
-                        <ul>
-                            <li> Humidity: {humidity}%</li>
-                            <li> Wind: {wind} km/h</li>
-                        </ul>
-                    </div>
-                </div>
+                <WeatherInfo currentCity={currentCity} date={date} description={description} iconUrl={iconUrl}
+                    temperature={temperature}
+                    humidity={humidity}
+                    wind={wind}
+                />
             </div>
         )
     }
