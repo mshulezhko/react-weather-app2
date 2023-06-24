@@ -41,3 +41,7 @@ li {
     float: left;
     margin-right: 10px;
 }
+
+.unit {
+    text-decoration: none;
+}

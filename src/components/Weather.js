@@ -25,8 +25,6 @@ export default function Weather() {
         } catch (error) {
             console.log(`${error} uyuyuyhjj`)
         }
-
-
     }
 
     if (!ready) {

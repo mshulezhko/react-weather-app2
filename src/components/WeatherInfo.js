@@ -1,9 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
 import FormattedDate from './FormattedDate'
 
 
 
 export default function WeatherInfo(props) {
+
+    let [temp, setTemp] = useState(props.temperature)
+
+    function setCelsius(event) {
+        event.preventDefault()
+        setTemp(props.temperature)
+    }
+
+    function setFahrenheit(event) {
+        event.preventDefault()
+        let temperature = (props.temperature * 9 / 5) + 32
+
+        setTemp(Math.round(temperature))
+
+    }
+
+
     return (
         <>
             <h1>{props.currentCity}</h1>
@@ -18,7 +35,7 @@ export default function WeatherInfo(props) {
             <div className="row">
                 <div className="col-6">
                     <img src={props.iconUrl} alt={props.description} />
-                    <span className='temperature' >{props.temperature}</span> <span className='unit'>°C</span>
+                    <span className='temperature' >{temp}</span> <a href="#!" onClick={setCelsius} className='unit'>°C</a> | <a href="#!" onClick={setFahrenheit} className='unit'>F</a>
                 </div>
                 <div className="col-3">
                     <ul>
