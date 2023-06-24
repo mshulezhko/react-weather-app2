@@ -3,7 +3,7 @@
     border-radius: 10px;
     margin: 0 auto;
     padding: 30px;
-    width: 750px;
+    width: 900px;
 }
 
 .Weather h1 {
@@ -44,4 +44,25 @@ li {
 
 .unit {
     text-decoration: none;
+}
+
+
+.forecast {
+    margin-top: 64px;
+
+}
+
+.forecast h4 {
+    font-size: 20px;
+    color: #707579;
+}
+
+
+
+.WeatherForecastPreview {
+    display: block;
+}
+
+.icon-forecast {
+    width: 50px;
 }

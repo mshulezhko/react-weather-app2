@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import WeatherInfo from './WeatherInfo'
+import WeatherForecast from './WeatherForecast'
 import './Weather.css'
 
 
@@ -13,6 +14,7 @@ export default function Weather() {
     let [iconUrl, setIconUrl] = useState(null)
     let [date, setDate] = useState(null)
     let [ready, setReady] = useState(false)
+    let [daily, setDaily] = useState(null)
 
     function search() {
         const apiKey = 't676b5db7efa1d1594cf0o673c7cebc3'
@@ -41,6 +43,7 @@ export default function Weather() {
         let date = new Date(response.data.daily[0].time * 1000);
         setDate(date)
         setCurrentCity(response.data.city)
+        setDaily(response.data.daily)
         setReady(true)
 
 
@@ -76,6 +79,7 @@ export default function Weather() {
                     humidity={humidity}
                     wind={wind}
                 />
+                <WeatherForecast daily={daily} />
             </div>
         )
     }

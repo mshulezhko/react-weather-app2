@@ -20,6 +20,13 @@ export default function FormattedDate(props) {
     if (minutes < 10) {
         minutes = `0${minutes}`;
     }
+
+    if (props.conditions === 'day') {
+        let daySubstr = day.substr(0, 3)
+
+        return daySubstr
+    }
+
     return (
         <div>
             {day} {hours}:{minutes}
