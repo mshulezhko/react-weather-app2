@@ -3,7 +3,7 @@
     border-radius: 10px;
     margin: 0 auto;
     padding: 30px;
-    width: 900px;
+    max-width: 900px;
 }
 
 .Weather h1 {
@@ -37,7 +37,7 @@ li {
 
 
 
-.Weather img {
+.Weather .main-icon {
     float: left;
     margin-right: 10px;
 }
@@ -61,8 +61,35 @@ li {
 
 .WeatherForecastPreview {
     display: block;
+
+}
+
+.WeatherForecast {
+    text-align: center;
+    margin: 40px 0;
+    border-bottom: 1px solid #f9f7fe;
+    padding-bottom: 50px;
+}
+
+.WeatherForecast .forecast-temperature {
+    font-style: normal;
+    font-size: 18px;
+    line-height: 1.5;
+    color: #085ED6;
+    font-weight: bold;
+}
+
+.WeatherForecast .forecast-temperature-min {
+    margin-left: 10px;
+    opacity: 0.6;
 }
 
 .icon-forecast {
-    width: 50px;
+    width: 44px;
+    height: 44px;
+}
+
+.Weather .WeatherForecastPreview .icon-forecast-block img {
+    display: block;
+    margin: 20px auto;
 }

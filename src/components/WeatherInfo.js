@@ -15,9 +15,7 @@ export default function WeatherInfo(props) {
     function setFahrenheit(event) {
         event.preventDefault()
         let temperature = (props.temperature * 9 / 5) + 32
-
         setTemp(Math.round(temperature))
-
     }
 
 
@@ -34,7 +32,7 @@ export default function WeatherInfo(props) {
             </ul>
             <div className="row">
                 <div className="col-6">
-                    <img src={props.iconUrl} alt={props.description} />
+                    <img className='main-icon' src={props.iconUrl} alt={props.description} />
                     <span className='temperature' >{temp}</span> <a href="#!" onClick={setCelsius} className='unit'>°C</a> | <a href="#!" onClick={setFahrenheit} className='unit'>F</a>
                 </div>
                 <div className="col-3">
