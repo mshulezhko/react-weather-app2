@@ -20,7 +20,7 @@ export default function WeatherForecast(props) {
                     return <div className='col'>
                         <div className='WeatherForecastPreview'>
                             <div className='forecast-time'><h4><FormattedDate date={date} conditions='day' /></h4></div>
-                            <div><img className='icon-forecast' src={day.condition.icon_url} alt={day.condition.description} /></div>
+                            <div className='icon-forecast-block'><img className='icon-forecast' src={day.condition.icon_url} alt={day.condition.description} /></div>
                             <div className="forecast-temperature">
                                 <span className="forecast-temperature-max">{maximum}°</span>
                                 <span className="forecast-temperature-min"> {minimum}°</span>
